@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AppcampeonatoSurf</string>
+    <string name="action_new">Novo Surfista</string>
+    <string name="surfistas">Surfistas</string>
+    <string name="action_delete">Excluir Surfistas</string>
+    <string name="selecione">Selecione um Surfista</string>
+    <string name="nodiscipline">Nenhum surfista selecionado</string>
 </resources>
