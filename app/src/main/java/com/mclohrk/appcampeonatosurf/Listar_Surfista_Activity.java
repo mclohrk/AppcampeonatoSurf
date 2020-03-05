@@ -2,13 +2,19 @@ package com.mclohrk.appcampeonatosurf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.AndroidException;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -34,7 +40,7 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
         SurfistasFiltrado.addAll(surfistas);
         ArrayAdapter<Surfista> adapter = new ArrayAdapter<Surfista>(this, android.R.layout.simple_list_item_1, SurfistasFiltrado);
         listview.setAdapter(adapter);
-
+        registerForContextMenu(listview);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,6 +60,13 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
             }
         });
         return true;
+    }
+
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_contexto, menu);
+
     }
 
     public void buscaSurfista(String str) {
@@ -78,6 +91,24 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
         SurfistasFiltrado.clear();
         SurfistasFiltrado.addAll(surfistas);
         listview.invalidate();
+    }
+
+    public void excl(MenuItem mItem) {
+        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) mItem.getMenuInfo();
+        final Surfista exclSurfista = SurfistasFiltrado.get(menuInfo.position);
+        AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Atencion =/").setMessage("vou excluir o cara,  viu?")
+                .setNegativeButton("NO", null)
+                .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SurfistasFiltrado.remove(exclSurfista);
+                        surfistas.remove(exclSurfista);
+                        surfistaDAO.excluirSurfista(exclSurfista);
+                        listview.invalidateViews();
+                    }
+                }).create();
+        dialog.show();
+
     }
 
 

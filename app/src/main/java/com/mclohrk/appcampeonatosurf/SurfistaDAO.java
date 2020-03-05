@@ -42,5 +42,10 @@ public class SurfistaDAO {
         }
         return surfistas;
     }
+
+    public void excluirSurfista(Surfista surfista) {
+        banco.delete("surfista", "id = ?", new String[]{surfista.getId().toString()});
+
+    }
 }
 

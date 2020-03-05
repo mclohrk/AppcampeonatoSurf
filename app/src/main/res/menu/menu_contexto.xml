@@ -4,6 +4,7 @@
 
     <item
         android:id="@+id/excluirSurfista"
+        android:onClick="excl"
         android:title="Excluir" />
     <item
         android:id="@+id/atualizar"
