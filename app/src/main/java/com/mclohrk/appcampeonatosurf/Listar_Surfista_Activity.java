@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,29 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_principal, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                buscaSurfistaPaiz(newText);
+                return false;
+            }
+        });
         return true;
+    }
+    public void buscaSurfistaPaiz(String str){
+        SurfistasFiltrado.clear();
+        for(Surfista surfista : surfistas){
+            if(surfista.getPaiz().toLowerCase().contains(str.toLowerCase())){
+                SurfistasFiltrado.add(surfista);
+            }
+        }
+        listview.invalidateViews();
     }
 
     public void cadastrar(MenuItem item) {
@@ -55,4 +78,5 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
         SurfistasFiltrado.addAll(surfistas);
         listview.invalidate();
     }
+
 }
