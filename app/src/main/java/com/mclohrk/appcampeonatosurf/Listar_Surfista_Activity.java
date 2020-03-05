@@ -49,16 +49,17 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                buscaSurfistaPaiz(newText);
+                buscaSurfista(newText);
                 return false;
             }
         });
         return true;
     }
-    public void buscaSurfistaPaiz(String str){
+
+    public void buscaSurfista(String str) {
         SurfistasFiltrado.clear();
-        for(Surfista surfista : surfistas){
-            if(surfista.getPaiz().toLowerCase().contains(str.toLowerCase())){
+        for (Surfista surfista : surfistas) {
+            if (surfista.getPaiz().toLowerCase().contains(str.toLowerCase())) {
                 SurfistasFiltrado.add(surfista);
             }
         }
@@ -78,5 +79,6 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
         SurfistasFiltrado.addAll(surfistas);
         listview.invalidate();
     }
+
 
 }
