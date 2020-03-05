@@ -30,7 +30,7 @@ public class SurfistaDAO {
 
     }
 
-    public List<Surfista> ListaSurfistas() {
+    public List<Surfista> listaSurfistas() {
         List<Surfista> surfistas = new ArrayList<>();
         Cursor cursor = banco.query("surfista", new String[]{"id", "nome", "paiz"}, null, null, null, null, null);
         while (cursor.moveToNext()) {

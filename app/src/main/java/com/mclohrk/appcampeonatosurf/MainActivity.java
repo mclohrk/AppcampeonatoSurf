@@ -26,6 +26,6 @@ public class MainActivity extends AppCompatActivity {
         surfista.setPaiz(paiz.getText().toString());
         surfistaDAO.inserirSurfista(surfista);
         long id = surfistaDAO.inserirSurfista((surfista));
-        Toast.makeText(this,"Surista inserido com  sucesso  ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Surfista inserido com  sucesso  ", Toast.LENGTH_SHORT).show();
     }
 }
