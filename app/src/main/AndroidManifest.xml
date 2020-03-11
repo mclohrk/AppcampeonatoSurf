@@ -9,8 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Listar_Surfista_Activity">
+
+        <activity android:name=".ListarBateriaActivity" />
+        <activity android:name=".BateriaActivity" />
+        <activity android:name=".ListarSurfistaActivity" />
+        <activity android:name=".Nota_Activity" />
+        <activity android:name=".SurfistaActivity" />
+        <activity android:name=".PrincipalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

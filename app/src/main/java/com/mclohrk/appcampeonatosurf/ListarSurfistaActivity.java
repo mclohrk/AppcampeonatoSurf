@@ -2,13 +2,10 @@ package com.mclohrk.appcampeonatosurf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.AndroidException;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +19,7 @@ import android.widget.SearchView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Listar_Surfista_Activity extends AppCompatActivity {
+public class ListarSurfistaActivity extends AppCompatActivity {
 
     private ListView listview;
     private SurfistaDAO surfistaDAO;
@@ -33,7 +30,6 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar__surfista_);
-
         listview = findViewById(R.id.listarSurfistas);
         surfistaDAO = new SurfistaDAO(this);
         surfistas = surfistaDAO.listaSurfistas();
@@ -80,7 +76,7 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
     }
 
     public void cadastrar(MenuItem item) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, SurfistaActivity.class);
         startActivity(intent);
     }
 
@@ -110,6 +106,5 @@ public class Listar_Surfista_Activity extends AppCompatActivity {
         dialog.show();
 
     }
-
 
 }

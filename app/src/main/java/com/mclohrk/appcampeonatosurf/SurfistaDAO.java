@@ -21,6 +21,10 @@ public class SurfistaDAO {
 
     }
 
+    public SurfistaDAO() {
+
+    }
+
     public long inserirSurfista(Surfista surfista) {
 
         ContentValues values = new ContentValues();
@@ -32,7 +36,8 @@ public class SurfistaDAO {
 
     public List<Surfista> listaSurfistas() {
         List<Surfista> surfistas = new ArrayList<>();
-        Cursor cursor = banco.query("surfista", new String[]{"id", "nome", "paiz"}, null, null, null, null, null);
+        Cursor cursor = banco.query("surfista", new String[]{"id", "nome", "paiz"},
+                null, null, null, null, null);
         while (cursor.moveToNext()) {
             Surfista surfista = new Surfista();
             surfista.setId(cursor.getInt(0));
@@ -44,7 +49,7 @@ public class SurfistaDAO {
     }
 
     public void excluirSurfista(Surfista surfista) {
-        banco.delete("surfista", "id = ?", new String[]{surfista.getId().toString()});
+        banco.delete("surfista", "id =?", new String[]{surfista.getId().toString()});
 
     }
 }
