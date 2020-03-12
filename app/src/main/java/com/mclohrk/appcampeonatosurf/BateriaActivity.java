@@ -18,13 +18,14 @@ public class BateriaActivity extends AppCompatActivity {
     private BateriaDAO bateriaDAO;
     private ListView listview;
 
-   // private SurfistaDAO surfistaDAO;
+    // private SurfistaDAO surfistaDAO;
     private List<Bateria> baterias;
     private List<Bateria> BateriasFiltrado = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         listview = findViewById(R.id.listaBaterias);
         setContentView(R.layout.activity_cad_bateria_);
         nomeSurfista = findViewById(R.id.editTextSufista);

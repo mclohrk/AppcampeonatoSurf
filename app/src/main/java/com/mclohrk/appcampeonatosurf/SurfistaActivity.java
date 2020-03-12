@@ -11,6 +11,7 @@ public class SurfistaActivity extends AppCompatActivity {
     private EditText nome;
     private EditText paiz;
     private SurfistaDAO surfistaDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +21,12 @@ public class SurfistaActivity extends AppCompatActivity {
         surfistaDAO = new SurfistaDAO(this);
     }
 
-    public void Salvar(View view){
+    public void Salvar(View view) {
         Surfista surfista = new Surfista();
         surfista.setNome(nome.getText().toString());
         surfista.setPaiz(paiz.getText().toString());
         surfistaDAO.inserirSurfista(surfista);
         long id = surfistaDAO.inserirSurfista(surfista);
-        Toast.makeText(this,"Surfista inserido com  sucesso  ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Surfista inserido com  sucesso  ", Toast.LENGTH_SHORT).show();
     }
 }

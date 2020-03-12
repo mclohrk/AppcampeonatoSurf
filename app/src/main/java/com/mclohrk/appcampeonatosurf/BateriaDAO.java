@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.LongFunction;
 
-public class  BateriaDAO {
+public class BateriaDAO {
 
     private Conexao conexao;
     private SQLiteDatabase banco;
@@ -52,6 +52,7 @@ public class  BateriaDAO {
 
         List<Bateria> baterias = new ArrayList<>();
         Cursor cursor = banco.query("bateria", new String[]{"id", "nome", "surfista"}, null, null, null, null, null);
+
         while (cursor.moveToNext()) {
             Bateria bateria = new Bateria();
             bateria.setId(cursor.getInt(0));
@@ -62,7 +63,10 @@ public class  BateriaDAO {
         return baterias;
     }
 
+    public List<Bateria> listaBateriaSurfista(Integer id) {
 
+        return null;
+    }
     public void excluirBateria(Bateria bateria) {
         banco.delete("bateria", "id =?", new String[]{bateria.getId().toString()});
 

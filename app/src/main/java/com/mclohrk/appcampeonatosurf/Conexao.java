@@ -17,11 +17,11 @@ public class Conexao extends SQLiteOpenHelper {
         db.execSQL("create table surfista(id integer primary key autoincrement,"
                 + "nome varchar(50), paiz varchar(50))");
 
-       // db.execSQL("create table bateria(id integer primary key autoincrement," + "nome varchar(50)," +
-              //  " id_surfista integer, foreign key(id_surfista) references surfista(id)  ON UPDATE SET NULL)");
+       db.execSQL("create table bateria(id integer primary key autoincrement," + "nome " +
+               "varchar(50),"+ "nome surfista(50)," +" id_surfista integer, foreign key" +
+               "(id_surfista) references surfista(id)  ON UPDATE SET NULL)");
 
-         db.execSQL("create table bateria(id integer primary key autoincrement," + "nome varchar(50)," +
-                 "surfista varchar(50))");
+         //db.execSQL("create table bateria(id integer primary key autoincrement," + "nome varchar(50)," + "surfista varchar(50))");
     }
 
     @Override

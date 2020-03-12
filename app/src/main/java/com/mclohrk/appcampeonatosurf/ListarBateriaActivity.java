@@ -2,13 +2,16 @@ package com.mclohrk.appcampeonatosurf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,9 +27,9 @@ public class ListarBateriaActivity extends AppCompatActivity {
     private BateriaDAO bateriaDAO;
     private List<Bateria> baterias;
     private List<Bateria> bateriasFiltrado = new ArrayList<Bateria>();
-    //private SurfistaDAO surfistaDAO;
-    //private List<Surfista> surfistas;
-    //private List<Surfista> SurfistasFiltrado = new ArrayList<>();
+    private SurfistaDAO surfistaDAO;
+    private List<Surfista> surfistas;
+    private List<Surfista> SurfistasFiltrado = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,30 @@ public class ListarBateriaActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_contexto_bateria, menu);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getBaseContext(), baterias.get(position).getNome(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(ListarBateriaActivity.this,
+                        BateriaSurfistListActivity.class);
+                intent.putExtra("Nome", baterias.get(position).getNome());
+                //surfistas =  surfistaDAO.listaSurfistas((int) id);
+                startActivity(intent);
+
+                //buscaBateriaId(position);
+
+                /*
+                abre lista de surfista
+                pega id da bateria
+                joga id no metodo buscarbateria
+                busca surfista com id bateria
+                retorna lista de surfistas
+                retorna lista em view
+                .2 click em surfista para add
+                * */
+            }
+        });
 
     }
 
@@ -70,10 +97,12 @@ public class ListarBateriaActivity extends AppCompatActivity {
         return true;
     }
 
-    public void buscaBateria(String str) {
-        bateriasFiltrado.clear();
+    public void buscaBateriaId(Integer i) {
+
+
+
         for (Bateria bateria : baterias) {
-            if (bateria.getNome().toLowerCase().contains(str.toLowerCase())) {
+            if (bateria.getId() == i) {
                 bateriasFiltrado.add(bateria);
             }
         }

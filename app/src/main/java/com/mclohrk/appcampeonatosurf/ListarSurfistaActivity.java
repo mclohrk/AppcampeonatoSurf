@@ -89,6 +89,13 @@ public class ListarSurfistaActivity extends AppCompatActivity {
         listview.invalidate();
     }
 
+    public List<Surfista> getSurfistas(Integer idSurfista) {
+        surfistas = surfistaDAO.listaSurfistas();
+        SurfistasFiltrado.clear();
+        SurfistasFiltrado.addAll(surfistas);
+        return surfistas;
+    }
+
     public void excl(MenuItem mItem) {
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) mItem.getMenuInfo();
         final Surfista exclSurfista = SurfistasFiltrado.get(menuInfo.position);

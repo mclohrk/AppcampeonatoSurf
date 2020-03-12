@@ -21,10 +21,6 @@ public class SurfistaDAO {
 
     }
 
-    public SurfistaDAO() {
-
-    }
-
     public long inserirSurfista(Surfista surfista) {
 
         ContentValues values = new ContentValues();
@@ -35,11 +31,29 @@ public class SurfistaDAO {
     }
 
     public List<Surfista> listaSurfistas() {
+
         List<Surfista> surfistas = new ArrayList<>();
         Cursor cursor = banco.query("surfista", new String[]{"id", "nome", "paiz"},
                 null, null, null, null, null);
         while (cursor.moveToNext()) {
             Surfista surfista = new Surfista();
+            surfista.setId(cursor.getInt(0));
+            surfista.setNome(cursor.getString(1));
+            surfista.setPaiz(cursor.getString(2));
+            surfistas.add(surfista);
+        }
+        return surfistas;
+    }
+
+    public List<Surfista> listaSurfistas(Integer idSurfista) {
+        //SQLiteDatabase selectDb = getReadableDatabase();
+        List<Surfista> surfistas = new ArrayList<>();
+        Surfista surfista = new Surfista();
+        String id = null;
+
+        Cursor cursor = banco.query("surfista", new String[]{"id", "nome", "paiz"}, "idSurfista" + " = ?", new String[]{String.valueOf(idSurfista)}, null, null, null);
+
+        while (cursor.moveToNext()) {
             surfista.setId(cursor.getInt(0));
             surfista.setNome(cursor.getString(1));
             surfista.setPaiz(cursor.getString(2));

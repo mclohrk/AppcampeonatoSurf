@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".BateriaSurfistListActivity"></activity>
         <activity android:name=".ListarBateriaActivity" />
         <activity android:name=".BateriaActivity" />
         <activity android:name=".ListarSurfistaActivity" />
