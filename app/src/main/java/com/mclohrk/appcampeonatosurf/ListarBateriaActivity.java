@@ -23,13 +23,13 @@ import java.util.List;
 
 public class ListarBateriaActivity extends AppCompatActivity {
 
+    public final static String LISTAR_BAT_ACTVTY = "ListarBateriaActivity";
     private ListView listview;
     private BateriaDAO bateriaDAO;
     private List<Bateria> baterias;
     private List<Bateria> bateriasFiltrado = new ArrayList<Bateria>();
     private SurfistaDAO surfistaDAO;
     private List<Surfista> surfistas;
-    private List<Surfista> SurfistasFiltrado = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,15 @@ public class ListarBateriaActivity extends AppCompatActivity {
         ArrayAdapter<Bateria> adapter = new ArrayAdapter<Bateria>(this, android.R.layout.simple_list_item_1, bateriasFiltrado);
         listview.setAdapter(adapter);
         registerForContextMenu(listview);
+
     }
 
+    public void startActivity(String url) {
+        Intent intent = new Intent(this, BateriaSurfistListActivity.class);
+        // Adiconamos a url ao intent...
+        intent.putExtra(LISTAR_BAT_ACTVTY, url);
+        startActivity(intent);
+    }
 
     @Override
     public void onResume() {
@@ -66,7 +73,8 @@ public class ListarBateriaActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ListarBateriaActivity.this,
                         BateriaSurfistListActivity.class);
-                intent.putExtra("Nome", baterias.get(position).getNome());
+                intent.putExtra("Nome", baterias.get((int)id).getNome());
+                Toast.makeText(getBaseContext(), baterias.get((int) id).getNome(), Toast.LENGTH_SHORT).show();
                 //surfistas =  surfistaDAO.listaSurfistas((int) id);
                 startActivity(intent);
 
@@ -98,7 +106,6 @@ public class ListarBateriaActivity extends AppCompatActivity {
     }
 
     public void buscaBateriaId(Integer i) {
-
 
 
         for (Bateria bateria : baterias) {

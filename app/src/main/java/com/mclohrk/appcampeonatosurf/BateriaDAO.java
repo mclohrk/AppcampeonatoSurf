@@ -63,10 +63,6 @@ public class BateriaDAO {
         return baterias;
     }
 
-    public List<Bateria> listaBateriaSurfista(Integer id) {
-
-        return null;
-    }
     public void excluirBateria(Bateria bateria) {
         banco.delete("bateria", "id =?", new String[]{bateria.getId().toString()});
 
