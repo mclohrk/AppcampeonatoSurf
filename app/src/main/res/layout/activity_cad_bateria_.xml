@@ -45,10 +45,13 @@
         android:id="@+id/editTextSufista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Surfista"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="326dp" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextNomeBat"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNomeBat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

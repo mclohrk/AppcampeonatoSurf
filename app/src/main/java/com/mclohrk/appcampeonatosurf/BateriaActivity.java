@@ -33,7 +33,7 @@ public class BateriaActivity extends AppCompatActivity {
         bateriaDAO = new BateriaDAO(this);
     }
 
-    //listarbateria
+
     public void salvarBateria(View view) {
         Bateria bateria = new Bateria();
         bateria.setNome(nomeBat.getText().toString());

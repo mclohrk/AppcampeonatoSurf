@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.widget.EditText;
 import android.os.Bundle;
 import android.webkit.WebViewClient;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,19 +27,18 @@ public class BateriaSurfistListActivity extends AppCompatActivity {
     private List<Surfista> surfistas;
     private List<Surfista> SurfistasFiltrado = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_bateria_surfist_list);
         Intent intent = getIntent();
-        String parametro = (String) intent.getSerializableExtra("Nome");
+        String parametro = (String) intent.getSerializableExtra("Bateria: ");
         TextView nome = findViewById(R.id.textView2);
         nome.setText(parametro);
         Intent intent2 = getIntent();
-        String url = intent2.getStringExtra(ListarBateriaActivity.LISTAR_BAT_ACTVTY);
-        ////WebView webView = findViewById(R.id.listaSurfistaBateria);
-        ////webView.loadUrl(url);
+        startActivity(intent2);
 
         listview = findViewById(R.id.listaSurfistaBateria);
         surfistaDAO = new SurfistaDAO(this);
@@ -49,4 +49,6 @@ public class BateriaSurfistListActivity extends AppCompatActivity {
         registerForContextMenu(listview);
 
     }
+
+
 }

@@ -18,7 +18,9 @@ public class Conexao extends SQLiteOpenHelper {
                 + "nome varchar(50), paiz varchar(50))");
 
        db.execSQL("create table bateria(id integer primary key autoincrement," + "nome " +
-               "varchar(50),"+ "nome surfista(50)," +" id_surfista integer, foreign key" +
+               "varchar(50),"+ "nomeSurfista varchar(50)," +" id_surfista integer, " +
+               "foreign " +
+               "key" +
                "(id_surfista) references surfista(id)  ON UPDATE SET NULL)");
 
          //db.execSQL("create table bateria(id integer primary key autoincrement," + "nome varchar(50)," + "surfista varchar(50))");

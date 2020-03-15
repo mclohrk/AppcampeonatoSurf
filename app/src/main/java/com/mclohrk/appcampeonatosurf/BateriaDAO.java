@@ -23,11 +23,12 @@ public class BateriaDAO {
 
     }
 
+
     public long inserirBateria(Bateria bateria) {
 
         ContentValues values = new ContentValues();
         values.put("nome", bateria.getNome());
-        values.put("surfista", bateria.getSurfista());
+        values.put("nomeSurfista", bateria.getSurfista());
         return banco.insert("bateria", null, values);
     }
 
@@ -51,7 +52,7 @@ public class BateriaDAO {
     public List<Bateria> listaBateria() {
 
         List<Bateria> baterias = new ArrayList<>();
-        Cursor cursor = banco.query("bateria", new String[]{"id", "nome", "surfista"}, null, null, null, null, null);
+        Cursor cursor = banco.query("bateria", new String[]{"id", "nome", "nomeSurfista"}, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             Bateria bateria = new Bateria();
