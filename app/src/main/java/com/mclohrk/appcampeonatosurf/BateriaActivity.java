@@ -40,7 +40,7 @@ public class BateriaActivity extends AppCompatActivity {
         bateria.setSurfista(nomeSurfista.getText().toString());
         bateriaDAO.inserirBateria(bateria);
         long id = bateriaDAO.inserirBateria(bateria);
-        Toast.makeText(this, "Bateria Criada com  sucesso  " + id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Bateria Criada com  sucesso:  " + id, Toast.LENGTH_SHORT).show();
     }
 
 }
