@@ -8,10 +8,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BateriaActivity extends AppCompatActivity {
+public class BateriaActivity extends AppCompatActivity implements Serializable {
 
     private EditText nomeBat;
     private EditText nomeSurfista;

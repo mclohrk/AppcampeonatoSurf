@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -42,14 +43,8 @@ public class ListarBateriaActivity extends AppCompatActivity {
         ArrayAdapter<Bateria> adapter = new ArrayAdapter<Bateria>(this, android.R.layout.simple_list_item_1, bateriasFiltrado);
         listview.setAdapter(adapter);
         registerForContextMenu(listview);
-
-    }
-
-    public void startActivity(String url) {
-        Intent intent = new Intent(this, BateriaSurfistListActivity.class);
-        // Adiconamos a url ao intent...
-        intent.putExtra(LISTAR_BAT_ACTVTY, url);
-        startActivity(intent);
+/*        Intent it = new Intent(this, BateriaSurfistListActivity.class);
+        it.putExtra("bat", (Parcelable) baterias);*/
     }
 
     @Override
@@ -64,6 +59,7 @@ public class ListarBateriaActivity extends AppCompatActivity {
 
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_contexto_bateria, menu);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -71,15 +67,16 @@ public class ListarBateriaActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getBaseContext(), baterias.get(position).getNome(), Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(ListarBateriaActivity.this,
-                        BateriaSurfistListActivity.class);
-                intent.putExtra("Nome", baterias.get((int)id).getNome());
-                Toast.makeText(getBaseContext(), baterias.get((int) id).getNome(), Toast.LENGTH_SHORT).show();
-                //surfistas =  surfistaDAO.listaSurfistas((int) id);
+                ArrayList<Bateria> bt = new ArrayList<>();
+                Intent intent = new Intent(ListarBateriaActivity.this, BateriaSurfistListActivity.class);
+                BateriaSurfistListActivity.bt = baterias.get(position);
                 startActivity(intent);
+/*
 
-                //buscaBateriaId(position);
-
+                Bateria bateria = new Bateria();
+                bateria = baterias.get((position));
+                intent.putExtra("bateria", bateria.getId());
+                Toast.makeText(getBaseContext(), baterias.get((int) id).getNome(), Toast.LENGTH_SHORT).show();*/
                 /*
                 abre lista de surfista
                 pega id da bateria
